@@ -1,0 +1,5 @@
+pandas
+numpy 
+seaborn
+matplotlib
+ # This automatical connect with setup.py
