@@ -2,4 +2,5 @@ pandas
 numpy 
 seaborn
 matplotlib
+scikit-learn
  # This automatical connect with setup.py

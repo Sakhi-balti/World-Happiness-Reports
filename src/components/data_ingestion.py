@@ -52,9 +52,43 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e, sys)
 
+# -----------------------------
+# Script execution (for testing)
+# -----------------------------
 if __name__ == "__main__":
-    obj = DataIngestion()
-    train_data , test_data = obj.initiate_data_ingestion()
+    try:
+        from src.components.data_ingestion import DataIngestion
+        from src.components.data_transformation import DataTransformations
+        from src.components.model_trainer import ModelTrainer
 
-    data_transformation = DataTransformations()
-    data_transformation.initiate_data_transformation(train_data, test_data)
+        # -------------------------------
+        # 1) DATA INGESTION
+        # -------------------------------
+        ingestion = DataIngestion()
+        train_path, test_path = ingestion.initiate_data_ingestion()
+
+        # -------------------------------
+        # 2) DATA TRANSFORMATION
+        # -------------------------------
+        transformer = DataTransformations()
+        train_arr, test_arr, preprocessor_path = transformer.initiate_data_transformation(
+            train_path, test_path
+        )
+
+        # -------------------------------
+        # 3) MODEL TRAINING
+        # -------------------------------
+        trainer = ModelTrainer()
+        results = trainer.initiate_model_training(train_arr, test_arr)
+
+        # -------------------------------
+        # PRINT SUMMARY
+        # -------------------------------
+        print("\n============== TRAINING COMPLETED ==============")
+        print(f"Best Model       : {results['best_model_name']}")
+        print(f"Best Test R²     : {results['best_r2_score']}")
+        print(f"Model Saved At   : {results['saved_model_path']}")
+        print("================================================\n")
+
+    except Exception as e:
+        print("Pipeline Failed:", e)
