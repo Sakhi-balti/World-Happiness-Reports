@@ -1,6 +1,21 @@
-pandas
-numpy 
-seaborn
-matplotlib
-scikit-learn
- # This automatical connect with setup.py
+dill==0.4.0
+
+Flask==3.1.2
+
+ipython==9.8.0
+
+joblib==1.5.2
+
+matplotlib==3.10.7
+matplotlib-inline==0.2.1
+
+numpy==2.3.5
+packaging==25.0
+pandas==2.3.3
+
+scikit-learn==1.7.2
+scipy==1.16.3
+seaborn==0.13.2
+
+# -e git+https://github.com/Sakhi-balti/World-Happiness-Reports.git@cd9854e1683c266cd4efa23a5f857bd5877e147c#egg=world_happiness_report
+xgboost==3.1.2

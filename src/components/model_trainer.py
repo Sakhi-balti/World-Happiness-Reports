@@ -40,16 +40,10 @@ class ModelTrainer:
                 "RandomForestRegressor": RandomForestRegressor(n_estimators=120, random_state=42),
                 "AdaBoostRegressor": AdaBoostRegressor(random_state=42),
                 "GradientBoostingRegressor": GradientBoostingRegressor(random_state=42),
-                "XGBRegressor": XGBRegressor(
-                    n_estimators=200,
-                    learning_rate=0.05,
-                    max_depth=5,
-                    random_state=42,
-                    n_jobs=-1
-                ),
-                "LinearRegression": LinearRegression(),
+                "XGBRegressor": XGBRegressor(),
+                "LinearRegression": LinearRegression(fit_intercept=True, n_jobs=-1),
             }
-
+           
             best_model_name = None
             best_score = -np.inf
             best_model = None

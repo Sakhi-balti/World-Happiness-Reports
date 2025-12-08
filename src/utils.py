@@ -26,10 +26,6 @@ def save_object(file_path, obj):
 # Generic Model Evaluation Function
 # ---------------------------------------------------------
 def evaluate_model(model, X_train, y_train, X_test, y_test):
-    """
-    Train a model, make predictions, and compute metrics.
-    Works for ANY sklearn-compatible model.
-    """
     try:
         model.fit(X_train, y_train)
 
@@ -42,6 +38,16 @@ def evaluate_model(model, X_train, y_train, X_test, y_test):
             "mae": mean_absolute_error(y_test, y_pred_test),
             "rmse": np.sqrt(mean_squared_error(y_test, y_pred_test)),
         }
+
+    except Exception as e:
+        raise CustomException(e, sys)
+#--------------------------------------------->
+# load_object work of a loading  model,preprocess etc
+
+def load_object(file_path):
+    try:
+        with open(file_path, 'rb') as file_obj:
+            return dill.load(file_obj)
 
     except Exception as e:
         raise CustomException(e, sys)
