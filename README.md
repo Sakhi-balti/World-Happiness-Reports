@@ -1,5 +1,6 @@
-World Happiness Score Prediction Project Report
-1. Project Overview
+# World Happiness Score Prediction Project Report
+
+## 1. Project Overview
 
 The objective of this project is to predict the World Happiness Score for a given country based on socio-economic indicators using Machine Learning. The key features include:
 
@@ -19,27 +20,28 @@ Corruption Perception
 
 This project was developed using a CI/CD (Continuous Integration/Continuous Deployment) pipeline approach. The focus was on automating model training, evaluation, and testing stages (Continuous Integration), while deployment to production (Continuous Deployment) is not included in this phase.
 
-2. Project Architecture
+## 2. Project Architecture
 
 The project is organized in a modular way with the following components:
-| Component                | Description                                                                                                |
+| Component | Description |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| `data_ingestion.py`      | Handles reading raw data files and splitting into train/test datasets.                                     |
-| `data_transformation.py` | Cleans the data, performs feature engineering, handles missing values, and applies normalization/scaling.  |
-| `model_trainer.py`       | Trains multiple models, evaluates them, performs hyperparameter tuning, and selects the best model.        |
-| `predict_pipeline.py`    | Defines a prediction pipeline for user input data and converts input into a suitable format for the model. |
-| `app.py`                 | Flask web application providing a GUI for users to enter input and get happiness score predictions.        |
+| `data_ingestion.py` | Handles reading raw data files and splitting into train/test datasets. |
+| `data_transformation.py` | Cleans the data, performs feature engineering, handles missing values, and applies normalization/scaling. |
+| `model_trainer.py` | Trains multiple models, evaluates them, performs hyperparameter tuning, and selects the best model. |
+| `predict_pipeline.py` | Defines a prediction pipeline for user input data and converts input into a suitable format for the model. |
+| `app.py` | Flask web application providing a GUI for users to enter input and get happiness score predictions. |
 
+Component Description
+data_ingestion.py Handles reading raw data files and splitting into train/test datasets.
+data_transformation.py Cleans the data, performs feature engineering, handles missing values, and applies normalization/scaling.
+model_trainer.py Trains multiple models, evaluates them, performs hyperparameter tuning, and selects the best model.
+predict_pipeline.py Defines a prediction pipeline for user input data and converts input into a suitable format for the model.
+app.py Flask web application providing a GUI for users to enter input and get happiness score predictions.
 
-Component	Description
-data_ingestion.py	Handles reading raw data files and splitting into train/test datasets.
-data_transformation.py	Cleans the data, performs feature engineering, handles missing values, and applies normalization/scaling.
-model_trainer.py	Trains multiple models, evaluates them, performs hyperparameter tuning, and selects the best model.
-predict_pipeline.py	Defines a prediction pipeline for user input data and converts input into a suitable format for the model.
-app.py	Flask web application providing a GUI for users to enter input and get happiness score predictions.
-3. Data Preprocessing Techniques
+## 3. Data Preprocessing Techniques
 
-Handling Missing Values
+### Handling Missing Values
+
 Missing data was handled by:
 
 Dropping columns or rows with excessive missing values.
@@ -48,7 +50,7 @@ Imputation with statistical measures (mean, median) for numeric columns.
 
 Ensuring consistent input for ML models.
 
-Feature Selection
+### Feature Selection
 
 Selected features based on domain knowledge from the World Happiness Report.
 
@@ -56,7 +58,7 @@ Removed irrelevant or redundant columns to reduce noise.
 
 Focused on numeric columns (GDP per Capita, Social Support, etc.) for regression modeling.
 
-Normalization/Scaling
+### Normalization/Scaling
 
 Applied StandardScaler to numeric features to normalize them.
 
@@ -64,27 +66,27 @@ This ensures that features like GDP per Capita and Social Support are on a compa
 
 Scaling improves model convergence and performance, especially for gradient-based models.
 
-Data Transformation
+### Data Transformation
 
 Converted categorical features (if any) using One-Hot Encoding.
 
 Ensured all features matched the training dataset schema before passing to the model.
 
-4. Machine Learning Models & Techniques
+## 4. Machine Learning Models & Techniques
 
-Candidate Models
+_Candidate Models_
 
-RandomForestRegressor
+_RandomForestRegressor_
 
-GradientBoostingRegressor
+_GradientBoostingRegressor_
 
-AdaBoostRegressor
+_AdaBoostRegressor_
 
-XGBRegressor
+_XGBRegressor_
 
-LinearRegression
+_LinearRegression_
 
-Hyperparameter Tuning
+### Hyperparameter Tuning
 
 Used GridSearchCV / RandomizedSearchCV to optimize parameters like:
 
@@ -96,7 +98,7 @@ Learning rate (learning_rate)
 
 Goal: Improve R² score and reduce prediction error.
 
-Model Evaluation
+### Model Evaluation
 
 Metrics used:
 
@@ -122,7 +124,7 @@ Ensures that any change in code or data triggers a new training pipeline.
 
 Logging is implemented to track pipeline execution and errors.
 
-5. Prediction Pipeline
+## 1. Prediction Pipeline
 
 Users can enter the features via a Flask web interface.
 
@@ -146,7 +148,7 @@ Data is scaled using the saved preprocessor before prediction.
 
 The prediction result is returned to the user interface.
 
-6. CI/CD Implementation
+## 6. CI/CD Implementation
 
 Continuous Integration (CI):
 
@@ -156,7 +158,7 @@ Any change in data ingestion, transformation, or model training triggers a new p
 
 Automated saving of preprocessor and trained models in the artifacts/ folder.
 
-Continuous Deployment (CD):
+### Continuous Deployment (CD):
 
 Not implemented in this project. Deployment could involve:
 
@@ -164,7 +166,7 @@ Hosting Flask app on a cloud server.
 
 Integrating with Docker or Kubernetes for scalable production deployment.
 
-7. Key Achievements
+## 7. Key Achievements
 
 Successfully automated the entire ML pipeline from data ingestion to model evaluation.
 
@@ -176,7 +178,7 @@ Applied feature scaling, missing value handling, and model selection systematica
 
 Enabled reproducibility by saving preprocessing and model objects.
 
-8. Limitations & Future Work
+## 8. Limitations & Future Work
 
 Currently, deployment is local only. Future work can involve:
 
@@ -188,7 +190,7 @@ Integrating CI/CD with Docker for containerized deployment.
 
 Expanding the input features to include more socio-economic indicators.
 
-9. Conclusion
+## 9. Conclusion
 
 This project demonstrates a complete machine learning lifecycle using a CI approach:
 
